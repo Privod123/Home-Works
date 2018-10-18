@@ -13,6 +13,6 @@ public class Zadacha_1 {
         int lenth = 5;
         int width = 3;
         System.out.println("Площадь паралелепипеда = " + 2*(height*lenth + lenth*width + width*height));
-        System.out.println((width > height) ? "ширина больше высоты" : "высота больше ширины");
+        System.out.println((width > height) ? "ширина больше высоты " : "высота больше ширины ");
     }
 }
