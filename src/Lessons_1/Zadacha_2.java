@@ -8,7 +8,7 @@ package Lessons_1;
 
 public class Zadacha_2 {
     public static void main(String[] args) {
-        int squareGarden = 100;
+        int squareGarden = 10;
         int lenthGardenBed = 25;
         int widthGadenBad = 15;
         // вычислим площать участка в м2.
