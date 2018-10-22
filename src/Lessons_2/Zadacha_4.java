@@ -29,9 +29,11 @@ public class Zadacha_4 {
                 }
                 if (countDivider == 2){
                     System.out.println( number + " - это простое число");
+                    in.close();
                     break;
                 }else {
                     System.out.println( number + " - это НЕ простое число");
+                    in.close();
                     break;
                 }
             }
