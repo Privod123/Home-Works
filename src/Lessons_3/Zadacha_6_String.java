@@ -9,17 +9,18 @@ import java.util.Arrays;
 
 public class Zadacha_6_String {
     public static void main(String[] args) {
-        String s = "abc cde def";
-        char[] charString = s.toCharArray();
-        Arrays.sort(charString);
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < charString.length - 1; i++) {
-            if (charString[i + 1] != charString[i])
-                stringBuilder.append(charString[i]);
-            if (i == charString.length - 2)
-                stringBuilder.append(charString[i + 1]);
+        String checkString = "abc cde def 1#@ ? ,";
+        checkString = checkString.replaceAll("[^a-z]+", " ").replaceAll("\\s","").trim();
+        System.out.println(checkString);
+        char[] charString = checkString.toCharArray();
+        String newSreing = "";
+        for (int i = 0; i < charString.length ; i++) {
+            if (!newSreing.contains(String.valueOf(charString[i]))) {
+                newSreing = newSreing.concat(String.valueOf(charString[i]));
+            }
+
         }
-        System.out.println(stringBuilder.toString().trim());
+        System.out.println(newSreing);
 
     }
 }
