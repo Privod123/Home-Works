@@ -1,4 +1,4 @@
-package Lessons_2;
+package lesson2;
 
 /*
 Есть три вершины X,Y,Z

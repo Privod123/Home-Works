@@ -1,4 +1,4 @@
-package Lessons_2;
+package lesson2;
 
 /*
 Проверить, является ли натуральное число - простым
@@ -16,7 +16,7 @@ public class Zadacha_4 {
             if (number <= 0){
                 System.out.println("Вы ввели неправильное число");
                 continue;
-            }else if (number == 1 || number == 2 || number == 3 || number == 5 || number == 7){
+            } else if (number == 1 || number == 2 || number == 3 || number == 5 || number == 7){
                 System.out.println( number + " - это простое число");
                 break;
             }else if (number%2 == 0){
