@@ -1,4 +1,4 @@
-package lesson4;
+package lesson4.zadacha1;
 
 public class Figure {
     final double pi = 3.14;
