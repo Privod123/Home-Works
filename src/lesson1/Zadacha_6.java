@@ -1,4 +1,4 @@
-package Lessons_1;
+package lesson1;
 
 /*
 В три переменные a,b и c записаны три вещественных числа.
