@@ -13,23 +13,16 @@ public class Library {
 
         } else if (freePlaceInsideLibrary < quantity){
             System.out.println("В библиотке свободно - " + freePlaceInsideLibrary + " места. " +
-                    "Положить в библиотеку " + quantity + " экземпляра " + book.toString() + " - недьзя.");
+                    "Положить в библиотеку " + quantity + " экземпляра " + book.toString() + " - нельзя.");
             return;
         }else {
-            label : for (int k = quantity; k > 0 ; k--) {
-                for (int i = 0; i < libraryBook.length; i++) {
-                    if (libraryBook[i] == null){
-                        libraryBook[i] = book;
-                        freePlaceInsideLibrary--;
-                        for (int j = 0; j < libraryBook.length; j++) {
-                            if (book.getNameBook().equals(libraryBook[i].getNameBook())
-                                    && book.getAuthorBook().equals(libraryBook[i].getAuthorBook()));{
-                                book.setQuantityBook(1);
-                                continue label;
-                            }
-                        }
-                        continue label;
-                    }
+            for (int i = 1; i <= libraryBook.length; i++) {
+                if (quantity > 0 && libraryBook[i - 1] == null ){
+                    libraryBook[i - 1] = book;
+                    freePlaceInsideLibrary--;
+                    quantity--;
+                    book.setQuantityBook(1);
+                    i =  0;
                 }
             }
         }
@@ -43,33 +36,50 @@ public class Library {
             System.out.println("В библиотке осталось только - " + book.getQuantityBook() + " экземпляров. Будете брать ?");
             return freePlaceInsideLibrary;
         } else {
-            label : for (int i = quantity; i > 0 ; i--) {
-                for (int j = 0; j < libraryBook.length; j++) {
-                    if (libraryBook[j] == null) {
-                        continue ;
+                for (int i = 1; i <= libraryBook.length; i++) {
+                    if (libraryBook[i - 1] == null) {
+                        continue;
                     }
-                    if (book.getNameBook().compareTo(libraryBook[j].getNameBook())
-                            == book.getAuthorBook().compareTo(libraryBook[j].getAuthorBook())){
-                        libraryBook[j] = null;
+                    if (quantity > 0 && book.getNameBook().compareTo(libraryBook[i - 1].getNameBook())
+                            == book.getAuthorBook().compareTo(libraryBook[i - 1].getAuthorBook())){
+                        libraryBook[i - 1] = null;
                         freePlaceInsideLibrary++;
                         book.setQuantityBook(-1);
-                        continue label;
+                        quantity--;
+                        i = 0;
                     }
-                }
             }
             return freePlaceInsideLibrary;
         }
     }
+
+
     //-------------------------------------------------------------
-    public void showLibrary(){
+    public void showLibraryFullReference(){
+        System.out.println("-----------------------------------");
         System.out.println("В библиотеке лежит :");
         for (int i = 0; i < libraryBook.length; i++) {
             if (libraryBook[i] != null){
-                System.out.println(i + 1 + "." + " Книга \"" + libraryBook[i].getNameBook() + "."
+                System.out.println(i + 1 + "." + " Книга \"" + libraryBook[i].getNameBook() + "\"."
                         + " Автор - " + libraryBook[i].getAuthorBook());
             } else {
                 System.out.println(i + 1  + "." + " Свободное место в библиотеке.");
             }
         }
+        System.out.println("-----------------------------------");
+    }
+    //-------------------------------------------------------------
+    public void showLibraryShortReference(){
+        System.out.println("-----------------------------------");
+        System.out.println("В библиотеке лежит :");
+        for (Book book : libraryBook) {
+            if (book == null){
+                continue;
+            } else {
+                System.out.println(" - книга \"" + book.getNameBook() + "\" автор - " + book.getAuthorBook()
+                        + " в количестве " + book.getQuantityBook() + " шт.");
+            }
+        }
+        System.out.println("-----------------------------------");
     }
 }
