@@ -12,19 +12,13 @@ public class ListTest {
         list.add(8);
 
         System.out.println("Посмотрим весь сформированный список:");
-        System.out.println(list.getHeadIndex().toString());
-        System.out.println("--------------------");
-        list.setCurrentIndex(list.getHeadIndex());
-        while (list.getCurrentIndex() != null){
-            System.out.println("Ячейка " + list.getCurrentIndex() + " содержит значение - " + list.getCurrentIndex().getVar());
-            list.setCurrentIndex(list.getCurrentIndex().getNextAdres());
-        }
+        list.print();
 
-        list.remove(6);
 
-        System.out.println("--------------------");
+        list.remove(5);
+
         System.out.println("Посмотрим весь сформированный список:");
-        System.out.println(list.getHeadIndex().toString());
+        list.print();
 
     }
 }

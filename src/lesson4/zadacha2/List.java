@@ -1,45 +1,49 @@
 package lesson4.zadacha2;
 
 public class List {
-    private Note currentIndex;
     private Note headIndex;
+    // -------------------------------------
     // метод добавляет элемент в список
     public  void add(int var){
         Note newNote = new Note(var);
-        if (currentIndex == null){
-            currentIndex = newNote;
-            headIndex = currentIndex;
+        if (headIndex == null){
+            headIndex = newNote;
         }else {
-            newNote.setNextAdress(currentIndex);
-            currentIndex = newNote;
-            headIndex = currentIndex;
+            newNote.setNextAdress(headIndex);
+            headIndex = newNote;
         }
     }
+    // -------------------------------------
     // метод удаляет элемент из списка
     public void remove (int var){
         Note index = headIndex;
-        if (index.getVar() == var){
-            currentIndex = currentIndex.getNextAdres();
+        if (index == null){
+            System.out.println("Список пуст");
         }
         while (index != null){
-            if (index.getNextAdres() == null){
-                System.out.println("значения - " + var + " нет в списке" );
+            if (index == headIndex && headIndex.getVar() == var){
+                headIndex = headIndex.getNextAdres();
                 break;
-            } else if (index.getNextAdres().getVar() == var){
+            } else if (index.getNextAdres().getVar() == var) {
                 index.setNextAdress(index.getNextAdres().getNextAdres());
                 break;
-            } else {
+            }
+            else {
                 index = index.getNextAdres();
             }
         }
     }
 
-    public Note getCurrentIndex() {
-        return currentIndex;
-    }
-
-    public void setCurrentIndex(Note currentIndex) {
-        this.currentIndex = currentIndex;
+    // -------------------------------------
+    // метод печатает элементы из списка
+    public void print(){
+        System.out.println("--------------------");
+        Note index = headIndex;
+        while ( index != null){
+            System.out.println("Ячейка [" + index + "] содержит значение - " + index.getVar());
+            index = index.getNextAdres();
+        }
+        System.out.println("--------------------");
     }
 
     public Note getHeadIndex() {
