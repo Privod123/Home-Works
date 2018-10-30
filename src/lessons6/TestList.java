@@ -8,17 +8,16 @@ public class TestList {
     public static void main(String[] args) {
 
         MyLinkedList myLinkedList = new MyLinkedList();
-        myLinkedList.push(1);
-        myLinkedList.push(2);
-        myLinkedList.push(3);
+        myLinkedList.push(new Integer(1));
+        myLinkedList.push(new Integer(2));
+        myLinkedList.push(new Integer(3));
 
         myLinkedList.print();
-//        myLinkedList.shift(1);
-//        myLinkedList.shift(2);
-        myLinkedList.shift(3);
+
+        myLinkedList.shift(new Integer(3));
         myLinkedList.print();
 
-        myLinkedList.push(5);
+        myLinkedList.push(new Integer(5));
         myLinkedList.print();
 
         myLinkedList.pop();
@@ -26,8 +25,6 @@ public class TestList {
 
         myLinkedList.unshift();
         myLinkedList.print();
-//
-//        myLinkedList.pop();
-//        myLinkedList.print();
+
     }
 }

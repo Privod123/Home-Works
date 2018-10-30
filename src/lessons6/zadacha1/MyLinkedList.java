@@ -22,9 +22,8 @@ public class MyLinkedList implements Stack,Queue{
     private Note currentElement;
 
     @Override
-    public void push(int obj) {
+    public void push(Object obj) {
         Note newNote = new Note(obj);
-
         if (currentElement == null){
             newNote.setNextAdress(null);
             newNote.setIndex(0);
@@ -34,7 +33,7 @@ public class MyLinkedList implements Stack,Queue{
             newNote.setIndex(currentElement.getIndex()+1);
             currentElement = newNote;
         }
-            }
+    }
 
     @Override
     public void pop() {
@@ -52,7 +51,7 @@ public class MyLinkedList implements Stack,Queue{
     }
 
     @Override
-    public void shift(int var) {
+    public void shift(Object var) {
         Note newNote = new Note(var);
         if (currentElement == null){
             newNote.setNextAdress(null);
@@ -70,7 +69,6 @@ public class MyLinkedList implements Stack,Queue{
                 index = index.getNextAdress();
             }
         }
-
     }
 
     @Override

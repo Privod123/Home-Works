@@ -2,7 +2,7 @@ package lessons6.zadacha1;
 
 public interface Queue {
 
-    void shift(int var);
+    void shift(Object var);
 
     void unshift();
 }
