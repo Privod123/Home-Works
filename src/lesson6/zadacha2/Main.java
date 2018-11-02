@@ -1,4 +1,4 @@
-package lessons6.zadacha2;
+package lesson6.zadacha2;
 
 public class Main {
     public static void main(String[] args) {
