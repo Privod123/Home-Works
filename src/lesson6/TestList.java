@@ -1,9 +1,8 @@
-package lessons6;
+package lesson6;
 
-import lessons6.zadacha1.*;
+import lesson6.zadacha1.*;
 
 import java.util.Iterator;
-import java.util.LinkedList;
 
 public class TestList {
     public static void main(String[] args) {

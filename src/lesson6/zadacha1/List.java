@@ -1,4 +1,4 @@
-package lessons6.zadacha1;
+package lesson6.zadacha1;
 
 public interface List {
     void add(Object obj, int pos);
