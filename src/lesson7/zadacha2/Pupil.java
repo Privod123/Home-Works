@@ -49,7 +49,6 @@ public class Pupil {
                 int mark = scanner.nextInt();
                 marks[j] = mark;
                 j++;
-                System.out.println("");
             } catch (InputMismatchException e){
                 System.out.println("Оценка может быть только цифра");
                 continue;
