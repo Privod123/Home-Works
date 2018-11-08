@@ -1,4 +1,4 @@
-package lessons7.zadacha1;
+package lesson7.zadacha1;
 
 public class TestPupil {
     public static void main(String[] args) {

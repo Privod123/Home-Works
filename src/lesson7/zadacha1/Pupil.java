@@ -1,59 +1,43 @@
-package lesson7.zadacha1_2;
+package lesson7.zadacha1;
 
-import java.util.*;
+import java.util.Scanner;
 
 public class Pupil {
     private int id;
+//    private ExamResult examResult[] = new ExamResult[2];
     private ExamResult examResult[];
-    int numberLesson;
 
-    {
-        System.out.println("Введите id студента : " );
-        Scanner scanner = new Scanner(System.in);
-        id = scanner.nextInt();
+    public Pupil(int id) {
+        this.id = id;
         //---------------------------------------
+        // Вариант 1 инициализации предметов и оценок
+//        String ex[] = {"Математика","Биология"};
+//        int marks[] = {2,5};
+        //---------------------------------------
+        // Вариант 2 инициализации предметов и оценок
         System.out.println("Введите колличество сдаваемых предметов студентом " + id + " : " );
-        try {
-            numberLesson = scanner.nextInt();
-        } catch (InputMismatchException e){
-            System.out.println("Kолличество сдаваемых предметов студентом может быть только цифра");
-        }
-        examResult = new ExamResult[numberLesson];
+        Scanner scanner = new Scanner(System.in);
+        int lenghtMassiv = scanner.nextInt();
+        examResult = new ExamResult[lenghtMassiv];
         //---------------------------------------
-        String ex[] = new String[numberLesson];
+        String ex[] = new String[lenghtMassiv];
         System.out.println("Введите предметы сдаваемые студентом " + id + " : " );
         int i = 0;
-        while (i < numberLesson){
+        while (i < lenghtMassiv){
             scanner = new Scanner(System.in);
             String subject = scanner.nextLine();
-            if (subject.equals("")){
-                System.out.println("не ввели предмет");
-                continue;
-            }
-            subject = subject.replaceAll("\\d"," ");
-            if (subject.equals(" ")){
-                System.out.println("Было введено число,сдаваемый предмет это слово");
-                continue;
-            }
             ex[i] = subject;
             i++;
         }
         //---------------------------------------
-        int marks[] = new int[numberLesson];
+        int marks[] = new int[lenghtMassiv];
         System.out.println("Введите оценки полученные студентом " + id + " : " );
         int j = 0;
-        while (j < numberLesson) {
-            try {
-                System.out.print(ex[j] + " : ");
-                scanner = new Scanner(System.in);
-                int mark = scanner.nextInt();
-                marks[j] = mark;
-                j++;
-                System.out.println("");
-            } catch (InputMismatchException e){
-                System.out.println("Оценка может быть только цифра");
-                continue;
-            }
+        while (j < lenghtMassiv){
+            scanner = new Scanner(System.in);
+            int mark = scanner.nextInt();
+            marks[j] = mark;
+            j++;
         }
         scanner.close();
         //---------------------------------------
@@ -91,4 +75,6 @@ public class Pupil {
             }
         }
     }
+
+
 }
