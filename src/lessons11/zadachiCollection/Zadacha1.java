@@ -37,8 +37,7 @@ public class Zadacha1 {
             list.add(string);
             if ( string.length() < minString) minString = string.length();
             i++;
-
         }
-
+        in.close();
     }
 }
