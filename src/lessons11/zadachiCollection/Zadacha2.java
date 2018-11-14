@@ -83,5 +83,6 @@ public class Zadacha2 {
         listZadacha.printList(listZadacha.generalList,listZadacha.listDeleniaNa3,listZadacha.listDeleniaNa2,listZadacha.otherList);
         listZadacha.printList(listZadacha.otherList);
         listZadacha.printList("%3");
+
     }
 }
