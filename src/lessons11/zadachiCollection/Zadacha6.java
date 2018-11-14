@@ -34,12 +34,27 @@ class SmenaMest{
             if (n == 0){
                 System.out.println("Введите число N - это колличество строк в списке");
                 n = in.nextInt();
+                if (n < 0) {
+                    System.out.println("Число N не может быть меньше нуля");
+                    n = 0;
+                    continue;
+                }
+                if (n == 0) {
+                    System.out.println("Число N не может быть равно нулю");
+                    n = 0;
+                    continue;
+                }
                 i++;
                 continue;
             }
             if (m == 0){
                 System.out.println("Введите число М - это колличество первых строк которые будут переставлены в конец списка");
                 m = in.nextInt();
+                if (m < 0) {
+                    System.out.println("Число M не может быть меньше нуля");
+                    m = 0;
+                    continue;
+                }
                 continue;
             }
             if (m > n) {
@@ -49,6 +64,7 @@ class SmenaMest{
                 i = 0;
                 continue;
             }
+            if(i == 1) System.out.println("Введите значения,которые заполнят список");
             list.add(in.nextLine());
             i++;
 
