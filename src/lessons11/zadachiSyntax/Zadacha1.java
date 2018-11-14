@@ -48,7 +48,7 @@ public class Zadacha1 {
     }
     // Проверяем является ли строка числом.
     static boolean checkString(String line){
-        char [] chars = line.toCharArray();
+        char [] chars = line.trim().toCharArray();
         int count = 0; // считаем количество чисел в строке
         int countPoint = 0; // считаем количество точек в строке
         int i = 0;
