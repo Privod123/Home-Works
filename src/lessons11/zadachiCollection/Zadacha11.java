@@ -19,35 +19,37 @@ import java.util.*;
 
 class CheckWorkTime{
 
+    int n = 10000;
+
     void insert10000(List list){
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < n; i++) {
             list.add(i);
         }
     }
 
     void get10000(List list){
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < n; i++) {
             list.get(i);
         }
     }
 
     void set10000First(List list){
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < n; i++) {
             list.set(0,i);
         }
     }
     void set10000HalfSize(List list){
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < n; i++) {
             list.set(10000/2,i);
         }
     }
     void set10000Last(List list){
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < n; i++) {
             list.set(9999,i);
         }
     }
     void remove10000(List list){
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < n; i++) {
             list.remove(0);
         }
     }
