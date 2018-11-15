@@ -19,7 +19,7 @@ import java.util.*;
 
 class CheckWorkTime{
 
-    int n = 10000;
+    int n = 100_000;
 
     void insert10000(List list){
         for (int i = 0; i < n; i++) {
@@ -32,22 +32,25 @@ class CheckWorkTime{
             list.get(i);
         }
     }
-
+    // заменяем первый в списке
     void set10000First(List list){
         for (int i = 0; i < n; i++) {
             list.set(0,i);
         }
     }
+    // заменяем элемент из сиридины списка
     void set10000HalfSize(List list){
         for (int i = 0; i < n; i++) {
-            list.set(10000/2,i);
+            list.set(n/2,i);
         }
     }
+    // заменяем последний в списке
     void set10000Last(List list){
         for (int i = 0; i < n; i++) {
             list.set(9999,i);
         }
     }
+    // удаляем первый в списке
     void remove10000(List list){
         for (int i = 0; i < n; i++) {
             list.remove(0);
@@ -58,39 +61,32 @@ class CheckWorkTime{
         long startTime = System.currentTimeMillis();
         insert10000(list);
         long finishTime = System.currentTimeMillis();
-        long res = finishTime - startTime;
-        System.out.println("Время вставки 10000 элементов : " + (finishTime - startTime) + " ms");
-        System.out.println("Размер списка : " + list.size());
+        System.out.println("Время вставки " + n + " элементов : " + (finishTime - startTime) + " ms");
         //-------------------------------------
         startTime = System.currentTimeMillis();
         get10000(list);
         finishTime = System.currentTimeMillis();
-        System.out.println("Время вызова 10000 элементов : " + (finishTime - startTime) + " ms");
-        System.out.println("Размер списка : " + list.size());
+        System.out.println("Время вызова  " + n + "  элементов : " + (finishTime - startTime) + " ms");
         //-------------------------------------
         startTime = System.currentTimeMillis();
         set10000First(list);
         finishTime = System.currentTimeMillis();
-        System.out.println("Время вызова вставки 10000 элементов в начало списка : " + (finishTime - startTime) + " ms");
-        System.out.println("Размер списка : " + list.size());
+        System.out.println("Время вызова вставки  " + n + " элементов в начало списка : " + (finishTime - startTime) + " ms");
         //-------------------------------------
         startTime = System.currentTimeMillis();
-        set10000First(list);
+        set10000HalfSize(list);
         finishTime = System.currentTimeMillis();
-        System.out.println("Время вызова вставки 10000 элементов в середину списка : " + (finishTime - startTime) + " ms");
-        System.out.println("Размер списка : " + list.size());
+        System.out.println("Время вызова вставки  " + n + "  элементов в середину списка : " + (finishTime - startTime) + " ms");
         //-------------------------------------
         startTime = System.currentTimeMillis();
         set10000Last(list);
         finishTime = System.currentTimeMillis();
-        System.out.println("Время вызова вставки 10000 элементов в конец списка : " + (finishTime - startTime) + " ms");
-        System.out.println("Размер списка : " + list.size());
+        System.out.println("Время вызова вставки  " + n + "  элементов в конец списка : " + (finishTime - startTime) + " ms");
         //-------------------------------------
         startTime = System.currentTimeMillis();
         remove10000(list);
         finishTime = System.currentTimeMillis();
-        System.out.println("Время удаления 10000 элементов из списка : " + (finishTime - startTime) + " ms");
-        System.out.println("Размер списка : " + list.size());
+        System.out.println("Время удаления  " + n + "  элементов(удаляем первый) из списка : " + (finishTime - startTime) + " ms");
     }
 }
 public class Zadacha11 {
