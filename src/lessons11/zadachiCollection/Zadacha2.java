@@ -24,20 +24,6 @@ public class Zadacha2 {
     ArrayList<Integer>  listDeleniaNa2 = new ArrayList<>();
     ArrayList<Integer>  listDeleniaNa3 = new ArrayList<>();
     ArrayList<Integer>  otherList = new ArrayList<>();
-//
-    {
-        Scanner in;
-        int i = 0;
-        while (i < 20){
-            in = new Scanner(System.in);
-            int number = in.nextInt();
-            generalList.add(number);
-            if (number % 2 == 0) listDeleniaNa2.add(number);
-            if (number % 3 == 0) listDeleniaNa3.add(number);
-            if (number % 2 != 0 && number % 3 != 0) otherList.add(number);
-            i++;
-        }
-    }
 
     void printList(ArrayList<Integer> list1,ArrayList<Integer> list2,
                           ArrayList<Integer> list3,ArrayList<Integer> list4) {
@@ -80,6 +66,18 @@ public class Zadacha2 {
     }
     public static void main(String[] args) {
         Zadacha2 listZadacha = new Zadacha2();
+        Scanner in;
+        int i = 0;
+        while (i < 20){
+            in = new Scanner(System.in);
+            int number = in.nextInt();
+            listZadacha.generalList.add(number);
+            if (number % 2 == 0) listZadacha.listDeleniaNa2.add(number);
+            if (number % 3 == 0) listZadacha.listDeleniaNa3.add(number);
+            if (number % 2 != 0 && number % 3 != 0) listZadacha.otherList.add(number);
+            i++;
+        }
+//        in.close();
         listZadacha.printList(listZadacha.generalList,listZadacha.listDeleniaNa3,listZadacha.listDeleniaNa2,listZadacha.otherList);
         listZadacha.printList(listZadacha.otherList);
         listZadacha.printList("%3");
