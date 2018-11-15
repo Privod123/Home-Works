@@ -13,16 +13,7 @@ import java.util.*;
 public class Zadacha3 {
     ArrayList<String> listString = new ArrayList<>(10);
     ArrayList<String> newListString = new ArrayList<>(20);
-    Scanner in;
-    {
-        int i = 0;
-        while (i < 10){
-            in = new Scanner(System.in);
-            listString.add(in.nextLine());
-            i++;
-        }
-        in.close();
-    }
+
     void doubleValues(){
         for (String s : listString) {
             newListString.add(s);
@@ -36,7 +27,15 @@ public class Zadacha3 {
     }
     public static void main(String[] args) {
         Zadacha3 zadacha3 = new Zadacha3();
+        Scanner in;
+        int i = 0;
+        while (i < 10){
+                in = new Scanner(System.in);
+                zadacha3.listString.add(in.nextLine());
+                i++;
+        }
         zadacha3.doubleValues();
         zadacha3.printList();
+//        in.close();
     }
 }
