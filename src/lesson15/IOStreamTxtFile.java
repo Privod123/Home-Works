@@ -14,6 +14,20 @@ public class IOStreamTxtFile{
     private  boolean inputFileIsNorma; // проверяем что указанный файл расширения TXT
     private  boolean outputFileIsNorma;  // проверяем что указанный файл расширения TXT
 
+    public IOStreamTxtFile(String inputNameFile) {
+        if (inputNameFile.toLowerCase().endsWith(".txt") ){
+            this.inputNameFile = inputNameFile;
+            inputFileIsNorma = true;
+        }else {
+            System.out.println("Введенный файл из которого читаем не является текстовым(не имеет расширение TXT)");
+            try {
+                throw new IOException();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public IOStreamTxtFile(String inputNameFile, String outputNameFile)  {
         if (inputNameFile.toLowerCase().endsWith(".txt") ){
             this.inputNameFile = inputNameFile;
@@ -77,5 +91,30 @@ public class IOStreamTxtFile{
                 System.out.println("Закончилась процедура копирования файла.");
             }
         }
+    }
+
+    public byte[] read(){
+        byte[] readWithFile = null; // информацию что прочитали из файла
+        if (inputFileIsNorma == true) {
+            System.out.println("Началась процедура чтения файла.");
+            File inputFile = new File("src\\lesson15\\zadacha4\\" + inputNameFile);
+            //---------------------------------------------------
+            try {
+                try (InputStream in = new FileInputStream(inputFile);
+                     BufferedInputStream bis = new BufferedInputStream(in);
+                     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream()
+                ) {
+                    int l;
+                    while ((l = bis.read()) != -1) {
+                        byteArrayOutputStream.write(l);
+                    }
+                    readWithFile = byteArrayOutputStream.toByteArray();
+                }
+            } catch (IOException e) {
+                System.out.println("Ошибка чтения файла");
+            }
+        }
+        System.out.println("Закончилась процедура чтения файла.");
+        return readWithFile;
     }
 }
