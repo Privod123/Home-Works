@@ -28,7 +28,7 @@ public class CopyFilesTxt {
         }
         in.close();
 
-        IOStreamTxtFile isoTXT = new IOStreamTxtFile(inputFile,outpupFile);
-        isoTXT.copyFile(Charset.forName("UTF-8"));
+        IOStreamTxtFile isoTXT = new IOStreamTxtFile();
+        isoTXT.copyFile(inputFile,outpupFile,Charset.forName("UTF-8"));
     }
 }

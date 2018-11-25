@@ -33,8 +33,8 @@ public class Shifr {
         }
         in.close();
 
-        IOStreamTxtFile iosTXT = new IOStreamTxtFile(inputFile);
-        byte[] readFile = iosTXT.read();
+        IOStreamTxtFile iosTXT = new IOStreamTxtFile();
+        byte[] readFile = iosTXT.read(inputFile);
         System.out.println("--------------------------");
         System.out.println("Строка до шифрования : ");
         System.out.println(new String(readFile,Charset.forName("UTF-8")));
@@ -43,12 +43,11 @@ public class Shifr {
         System.out.println("Строка после шифрования : ");
         byte[] shifrFile = encodeAndDecode(readFile,inputKey);
         System.out.println(new String(shifrFile,Charset.forName("UTF-8")));
-        IOStreamTxtFile iosTXT1 = new IOStreamTxtFile(resSifraFile);
-        iosTXT1.write(shifrFile);
+        iosTXT.write(resSifraFile,shifrFile);
         //----------------------------------------------
         System.out.println("--------------------------");
         System.out.println("Строка после дешифрования");
-        byte[] deshifrFile = encodeAndDecode(iosTXT1.read(),inputKey);
+        byte[] deshifrFile = encodeAndDecode(iosTXT.read(resSifraFile),inputKey);
         System.out.println(new String(deshifrFile,Charset.forName("UTF-8")));
 
     }

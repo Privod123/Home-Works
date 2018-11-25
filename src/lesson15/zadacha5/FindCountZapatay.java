@@ -23,8 +23,8 @@ public class FindCountZapatay {
         }
         in.close();
 
-        IOStreamTxtFile iosTXT = new IOStreamTxtFile(inputFile);
-        byte[] readBytes = iosTXT.read();
+        IOStreamTxtFile iosTXT = new IOStreamTxtFile();
+        byte[] readBytes = iosTXT.read(inputFile);
         int countZapatay = 0;
         for (byte b: readBytes) {
             if (new String(new byte[]{b}, Charset.forName("UTF-8")).equals(",")){

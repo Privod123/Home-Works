@@ -22,8 +22,8 @@ public class SortByteWithFile {
         }
         in.close();
 
-        IOStreamTxtFile iosTXT = new IOStreamTxtFile(inputFile);
-        byte[] readBytes = iosTXT.read();
+        IOStreamTxtFile iosTXT = new IOStreamTxtFile();
+        byte[] readBytes = iosTXT.read(inputFile);
         System.out.println("--------------------------");
         System.out.println("До сортировки байтов из файла");
         for (byte b : readBytes) {
