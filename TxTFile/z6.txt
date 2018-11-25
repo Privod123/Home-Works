@@ -1,0 +1,1 @@
+Creates a file output stream to write to the file represented by Wi

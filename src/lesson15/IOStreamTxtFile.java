@@ -9,15 +9,17 @@ import java.nio.charset.Charset;
  */
 public class IOStreamTxtFile{
 
+    private String nameFile;
     private String inputNameFile;
     private String outputNameFile;
+    private  boolean nameFileIsNorma; // проверяем что указанный файл расширения TXT
     private  boolean inputFileIsNorma; // проверяем что указанный файл расширения TXT
     private  boolean outputFileIsNorma;  // проверяем что указанный файл расширения TXT
 
-    public IOStreamTxtFile(String inputNameFile) {
-        if (inputNameFile.toLowerCase().endsWith(".txt") ){
-            this.inputNameFile = inputNameFile;
-            inputFileIsNorma = true;
+    public IOStreamTxtFile(String nameFile) {
+        if (nameFile.toLowerCase().endsWith(".txt") ){
+            this.nameFile = nameFile;
+            nameFileIsNorma = true;
         }else {
             System.out.println("Введенный файл из которого читаем не является текстовым(не имеет расширение TXT)");
             try {
@@ -52,7 +54,7 @@ public class IOStreamTxtFile{
             }
         }
     }
-
+    //------------------------------------------------------------------------------------------------------------------
     public void copyFile(Charset charset) {
         if (inputFileIsNorma == true && outputFileIsNorma == true){
             System.out.println("Началась процедура копирования файла.");
@@ -92,13 +94,12 @@ public class IOStreamTxtFile{
             }
         }
     }
-
+    //------------------------------------------------------------------------------------------------------------------
     public byte[] read(){
         byte[] readWithFile = null; // информацию что прочитали из файла
-        if (inputFileIsNorma == true) {
+        if (nameFileIsNorma == true) {
             System.out.println("Началась процедура чтения файла.");
-            File inputFile = new File("TxTFile\\" + inputNameFile);
-            //---------------------------------------------------
+            File inputFile = new File("TxTFile\\" + nameFile);
             try {
                 try (InputStream in = new FileInputStream(inputFile);
                      BufferedInputStream bis = new BufferedInputStream(in);
@@ -116,5 +117,20 @@ public class IOStreamTxtFile{
         }
         System.out.println("Закончилась процедура чтения файла.");
         return readWithFile;
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    public void write(byte[] massivBytes){
+        System.out.println("Началась процедура записи в файл.");
+        File outputFile = new File("TxTFile\\" + nameFile);
+        try {
+            try (OutputStream out = new FileOutputStream(outputFile,false);
+                 BufferedOutputStream bout = new BufferedOutputStream(out)){
+                System.out.println("Колличество скопированных байт в файл " + nameFile + " : " + massivBytes.length);
+                bout.write(massivBytes,0,massivBytes.length);
+            }
+        } catch (IOException e) {
+            System.out.println("Ошибка записи в файл");
+        }
+        System.out.println("Окончена процедура записи в файл.");
     }
 }
