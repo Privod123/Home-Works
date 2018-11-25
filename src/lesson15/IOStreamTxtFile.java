@@ -7,52 +7,6 @@ import java.nio.charset.Charset;
  * Created by Hello on 24.11.2018.
  */
 public class IOStreamTxtFile{
-
-    private String nameFile;
-    private String nameFile1;
-    private String nameFile2;
-    private  boolean nameFileIsNorma; // проверяем что указанный файл расширения TXT
-    private  boolean nameFile1IsNorma; // проверяем что указанный файл расширения TXT
-    private  boolean nameFile2IsNorma;  // проверяем что указанный файл расширения TXT
-
-//    public IOStreamTxtFile(String nameFile) {
-//        if (nameFile.toLowerCase().endsWith(".txt") ){
-//            this.nameFile = nameFile;
-//            nameFileIsNorma = true;
-//        }else {
-//            System.out.println("Введенный файл из которого читаем не является текстовым(не имеет расширение TXT)");
-//            try {
-//                throw new IOException();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//    }
-//
-//    public IOStreamTxtFile(String nameFile1, String nameFile2)  {
-//        if (nameFile1.toLowerCase().endsWith(".txt") ){
-//            this.nameFile1 = nameFile1;
-//            nameFile1IsNorma = true;
-//        }else {
-//            System.out.println("Введенный файл из которого читаем не является текстовым(не имеет расширение TXT)");
-//            try {
-//                throw new IOException();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        if (nameFile2.toLowerCase().endsWith(".txt")){
-//            this.nameFile2 = nameFile2;
-//            nameFile2IsNorma = true;
-//        }else {
-//            System.out.println("Введенный файл в который читаем не является текстовым(не имеет расширение TXT)");
-//            try {
-//                throw new IOException();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//    }
     //------------------------------------------------------------------------------------------------------------------
     public void copyFile(String inputNameFile, String outputNameFile,Charset charset) {
         if (checkFileTxt(inputNameFile) == true && checkFileTxt(outputNameFile) == true){
@@ -121,11 +75,11 @@ public class IOStreamTxtFile{
     public void write(String outputNameFile, byte[] massivBytes){
         if (checkFileTxt(outputNameFile) == true){
             System.out.println("Началась процедура записи в файл.");
-            File outputFile = new File("TxTFile\\" + nameFile);
+            File outputFile = new File("TxTFile\\" + outputNameFile);
             try {
                 try (OutputStream out = new FileOutputStream(outputFile,false);
                      BufferedOutputStream bout = new BufferedOutputStream(out)){
-                    System.out.println("Колличество скопированных байт в файл " + nameFile + " : " + massivBytes.length);
+                    System.out.println("Колличество скопированных байт в файл " + outputNameFile + " : " + massivBytes.length);
                     bout.write(massivBytes,0,massivBytes.length);
                 }
             } catch (IOException e) {
@@ -177,6 +131,32 @@ public class IOStreamTxtFile{
                     System.out.println("Ошибка записи в файл");
                 }
                 System.out.println("Закончилась процедура склеивания двух файлов.");
+            }
+        }
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    public void splitFile(String inputNameFile,String outputNameFile1,String outputNameFile2, int pos ){
+        if (checkFileTxt(inputNameFile) == true &&
+                checkFileTxt(outputNameFile1) == true &&
+                checkFileTxt(outputNameFile2) == true){
+            System.out.println("------------------------------------");
+            byte[] bytesFile = read(inputNameFile);
+            System.out.println("------------------------------------");
+            if (pos > bytesFile.length || pos < 0){
+                System.out.println("Введное чило, разбивающее массив не корректно");
+                try {
+                     throw new IOException();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }else {
+                byte[] bytesOutFile1 = new byte[pos];
+                byte[] bytesOutFile2 = new byte[bytesFile.length - pos];
+                System.arraycopy(bytesFile,0,bytesOutFile1,0,pos);
+                System.arraycopy(bytesFile,pos,bytesOutFile2,0,bytesFile.length - pos);
+                write(outputNameFile1,bytesOutFile1);
+                System.out.println("------------------------------------");
+                write(outputNameFile2,bytesOutFile2);
             }
         }
     }
