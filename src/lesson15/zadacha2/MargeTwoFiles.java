@@ -8,7 +8,7 @@ import java.util.Scanner;
 /**
  * Created by Hello on 25.11.2018.
  */
-public class SplitAndMarge {
+public class MargeTwoFiles {
     public static void main(String[] args) {
         String inputFile1 = null;
         String inputFile2 = null;
@@ -24,7 +24,7 @@ public class SplitAndMarge {
                 System.out.println("Введите имя файла № 2 с расширением, в который надо склеить (Например - file.txt) :");
                 inputFile2 = in.nextLine();
                 continue;
-            } else  if ( inputFile2 == null){
+            } else  if ( inputFile3 == null){
                 System.out.println("Введите имя файла № 2 с расширением, в который надо склеить (Например - file.txt) :");
                 inputFile2 = in.nextLine();
                 continue;
@@ -34,7 +34,7 @@ public class SplitAndMarge {
         }
         in.close();
 
-        IOStreamTxtFile iosTxT = new IOStreamTxtFile(inputFile1,inputFile2);
-        iosTxT.mergeTwoFiles(Charset.forName("UTF-8"));
+        IOStreamTxtFile iosTxT = new IOStreamTxtFile();
+        iosTxT.mergeTwoFiles(inputFile1, inputFile2, Charset.forName("UTF-8"));
     }
 }
