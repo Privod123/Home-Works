@@ -56,7 +56,7 @@ public class IOStreamTxtFile{
     public void copyFile(Charset charset) {
         if (inputFileIsNorma == true && outputFileIsNorma == true){
             System.out.println("Началась процедура копирования файла.");
-            File inputFile = new File("src\\lesson15\\zadacha1\\" + inputNameFile);
+            File inputFile = new File("TxTFile\\" + inputNameFile);
             String text = null; // информацию что прочитали из файла
             boolean readIsNorma = false; // проверяем что чтение файла прошло успешно
             //---------------------------------------------------
@@ -77,7 +77,7 @@ public class IOStreamTxtFile{
             }
             //---------------------------------------------------
             if (readIsNorma == true){
-                File outputFile = new File("src\\lesson15\\zadacha1\\" + outputNameFile);
+                File outputFile = new File("TxTFile\\" + outputNameFile);
                 try {
                     try (OutputStream out = new FileOutputStream(outputFile,false);
                          BufferedOutputStream bout = new BufferedOutputStream(out)){
@@ -97,7 +97,7 @@ public class IOStreamTxtFile{
         byte[] readWithFile = null; // информацию что прочитали из файла
         if (inputFileIsNorma == true) {
             System.out.println("Началась процедура чтения файла.");
-            File inputFile = new File("src\\lesson15\\zadacha4\\" + inputNameFile);
+            File inputFile = new File("TxTFile\\" + inputNameFile);
             //---------------------------------------------------
             try {
                 try (InputStream in = new FileInputStream(inputFile);
