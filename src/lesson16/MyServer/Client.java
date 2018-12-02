@@ -29,24 +29,20 @@ public class Client<T> {
         while (true){
             System.out.println("Enter your massege");
             String mes = scanner.nextLine();
-            if (mes.equals("/list_users") || mes.equals("/server_time")){
-                buildAndSendExecute(mes,name);
-            } else{
-                buildAndSendMes(mes, name);
-            }
+            buildAndSendMes(mes,name);
         }
     }
 
-    private void buildAndSendExecute(String text,String name){
-        Command  command= new Command();
-        command.setSender(name);
-        command.setCommand(text);
-        sendMes((T) command);
-    }
-
     private void buildAndSendMes(String text, String name){
-        Mes message = new Mes(text,name);
-        sendMes((T) message);
+        if (text.startsWith("/")){
+            Command  command= new Command();
+            command.setSender(name);
+            command.setCommand(text);
+            sendMes((T) command);
+        }else {
+            Mes message = new Mes(text,name);
+            sendMes((T) message);
+        }
     }
 
     private void sendMes(T text){
