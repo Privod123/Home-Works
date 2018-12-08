@@ -5,7 +5,7 @@ package lesson18.command;
  */
 abstract public class Command {
     abstract String name();// имя команды
-    abstract boolean execute(StringBuilder sb, Storage storage, int countMesage);
+    abstract boolean execute(StringBuilder sb, Storage storage);
 
     protected TextProcessor processor;
 

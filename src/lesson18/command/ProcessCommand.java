@@ -14,11 +14,9 @@ public class ProcessCommand extends Command {
     }
 
     @Override
-    boolean execute(StringBuilder sb, Storage storage, int countMesage) {
+    boolean execute(StringBuilder sb, Storage storage) {
         sb.append("-------------------------");
-        storage.add(sb.toString());
-        sb.delete(0,sb.length());
-        sb.append("-------------------------").append("\n").append(countMesage++).append("\n");
+        storage.add(sb.toString()); // запись данных в хранилище
         return true;
     }
 }

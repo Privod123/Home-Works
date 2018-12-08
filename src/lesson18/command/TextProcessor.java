@@ -10,9 +10,9 @@ import java.util.TreeMap;
  */
 public class TextProcessor {
 
-    private Storage storage = new Storage();
-    private StringBuilder sb = new StringBuilder();
-    private static int countMesage = 1;
+    private Storage storage = new Storage(); //  хранилище данных
+    private StringBuilder sb = new StringBuilder(); // формируется строка сообщений от пользователя
+    private static int countMesage = 1; // колличество команд которые выполнились
 
     static {
         System.out.println("Здравствуй,Пользователь.");
@@ -34,15 +34,16 @@ public class TextProcessor {
                     storage.printStorage();
                     break ;
                 case "process":
-                   if (new ProcessCommand(this).execute(sb,storage,countMesage)){
-                       countMesage++;
+                   if (new ProcessCommand(this).execute(sb,storage)){
+                       sb.delete(0,sb.length()); // стираем данные что ввел пользователь,команда выполнилась
+                       sb.append("-------------------------").append("\n").append(countMesage++).append("\n");
                        System.out.println("Запись в хранилище данных прошла успешно");
                    }else {
                        System.out.println("ОШИБКА записи в хранилище данных");
                    }
                     break;
                 case "exit":
-                    if(new ExitCommand(this).execute(sb,storage,countMesage)){
+                    if(new ExitCommand(this).execute(sb,storage)){
                         break label;
                     }else {
                         System.out.println("ОШИБКА выхода из программы");

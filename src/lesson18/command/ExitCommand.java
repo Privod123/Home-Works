@@ -15,7 +15,7 @@ public class ExitCommand extends Command {
     }
 
     @Override
-    boolean execute(StringBuilder sb, Storage storage, int countMesage) {
+    boolean execute(StringBuilder sb, Storage storage) {
         return true;
     }
 }
