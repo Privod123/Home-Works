@@ -15,7 +15,7 @@ public class ReflectoinToString {
         this.obj = obj;
     }
 
-    public static String tooString(Object obj){
+    public static String toString(Object obj){
         Class cls = obj.getClass();
         Field[] fields = cls.getDeclaredFields();
         StringBuilder sb = new StringBuilder();
