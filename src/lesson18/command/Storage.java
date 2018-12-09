@@ -23,4 +23,8 @@ public class Storage {
         System.out.println("/--------------------------/");
     }
 
+    public boolean isEmpety(){
+        return storageMessage.isEmpty();
+    }
+
 }

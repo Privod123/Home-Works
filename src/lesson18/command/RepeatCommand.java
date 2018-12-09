@@ -1,16 +1,18 @@
 package lesson18.command;
 
 /**
- * Created by Hello on 05.12.2018.
+ * Created by Hello on 09.12.2018.
  */
-public class ProcessCommand extends Command {
+public class RepeatCommand extends Command {
 
-    public ProcessCommand(TextProcessor processor){
+
+    public RepeatCommand(TextProcessor processor) {
         super(processor);
     }
+
     @Override
     String name() {
-        return "ProcessCommand";
+        return "RepeatCommand";
     }
 
     @Override
