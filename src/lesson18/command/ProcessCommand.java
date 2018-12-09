@@ -13,7 +13,7 @@ public class ProcessCommand extends Command {
         return "ProcessCommand";
     }
 
-    @Override
+        @Override
     boolean execute(StringBuilder sb, Storage storage) {
         sb.append("-------------------------");
         storage.add(sb.toString()); // запись данных в хранилище

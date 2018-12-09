@@ -7,6 +7,7 @@ abstract public class Command {
     abstract String name();// имя команды
     abstract boolean execute(StringBuilder sb, Storage storage);
 
+
     protected TextProcessor processor;
 
     public Command(TextProcessor processor){

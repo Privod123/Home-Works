@@ -15,8 +15,12 @@ public class Storage {
     }
 
     public void printStorage(){
+        System.out.println("/--------------------------/");
+        System.out.println("История сообщений введеных пользователем:");
         for (int i = 0; i < storageMessage.size(); i++) {
             System.out.println(storageMessage.get(i));
         }
+        System.out.println("/--------------------------/");
     }
+
 }

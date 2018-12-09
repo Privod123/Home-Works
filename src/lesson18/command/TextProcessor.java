@@ -1,9 +1,6 @@
 package lesson18.command;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * Created by Hello on 05.12.2018.
@@ -11,6 +8,7 @@ import java.util.TreeMap;
 public class TextProcessor {
 
     private Storage storage = new Storage(); //  хранилище данных
+    private CommandHistory history = new CommandHistory();  // хранилище команд
     private StringBuilder sb = new StringBuilder(); // формируется строка сообщений от пользователя
     private static int countMesage = 1; // колличество команд которые выполнились
 
@@ -30,16 +28,21 @@ public class TextProcessor {
                 case "help":
                     listCommand();
                     break ;
-                case "showStorage":
+                case "storage":
                     storage.printStorage();
                     break ;
+                case "log":
+                    history.listCommandHistory();
+                    break ;
                 case "process":
-                   if (new ProcessCommand(this).execute(sb,storage)){
-                       sb.delete(0,sb.length()); // стираем данные что ввел пользователь,команда выполнилась
-                       sb.append("-------------------------").append("\n").append(countMesage++).append("\n");
-                       System.out.println("Запись в хранилище данных прошла успешно");
+                    Command process = new ProcessCommand(this);
+                   if (process.execute(sb,storage)){
+                        history.add(process);
+                        sb.delete(0,sb.length()); // стираем данные что ввел пользователь,команда выполнилась
+                        sb.append("-------------------------").append("\n").append(countMesage++).append("\n");
+                        System.out.println("Запись в хранилище данных прошла успешно");
                    }else {
-                       System.out.println("ОШИБКА записи в хранилище данных");
+                        System.out.println("ОШИБКА записи в хранилище данных");
                    }
                     break;
                 case "exit":
@@ -54,16 +57,22 @@ public class TextProcessor {
 
             }
         }
+        in.close();
     }
 
+    // формируем список команд
     private void listCommand(){
+        System.out.println("Список команд доступных пользователю:");
         Map<String,String > listCommand = new HashMap<>();
         listCommand.put("process","команда добавляет записанный текст в хранилище");
         listCommand.put("exit","команда заканчивает работу программы");
+        listCommand.put("storage","команда показвает все сообщения записанные в хранилище");
+        listCommand.put("log","команда показвает историю всех команд введеных пользователем");
         int i = 1;
         for (Map.Entry map : listCommand.entrySet()){
             System.out.println( i++ + " - " + map.getKey() + " - " + map.getValue());
         }
     }
+
 }
 
