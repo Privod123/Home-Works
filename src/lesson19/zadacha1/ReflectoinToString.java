@@ -25,8 +25,7 @@ public class ReflectoinToString {
             try {
                 String fieldName = fields[i].getName(); // получаем имя поля
                 String fieldType = fields[i].getType().getSimpleName(); // получаем тип пол
-                Exclude exclude = fields[i].getAnnotation(Exclude.class);// проверяем что поле имеет аннотацию
-                if (exclude != null) continue; // если аннотация есть,то в результат это поле не идет.
+                if (fields[i].isAnnotationPresent(Exclude.class)) continue; // если аннотация поля есть,то в результат это поле не идет.
                 sb.append(fieldType).
                     append(" ").
                     append(fieldName);
