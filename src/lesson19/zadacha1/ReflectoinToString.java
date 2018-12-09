@@ -1,5 +1,7 @@
 package lesson19.zadacha1;
 
+import lesson19.annotation.PermissionRequired;
+
 import java.lang.reflect.Field;
 
 /**
@@ -17,12 +19,14 @@ public class ReflectoinToString {
         Class cls = obj.getClass();
         Field[] fields = cls.getDeclaredFields();
         StringBuilder sb = new StringBuilder();
-        sb.append(cls.getName()).append(" содержит поля :").append("\n");
+        sb.append(cls.getSimpleName()).append(" содержит поля :").append("\n");
         for (int i = 0; i < fields.length; i++) {
             Field field = null;
             try {
                 String fieldName = fields[i].getName(); // получаем имя поля
-                String fieldType = fields[i].getType().getName(); // получаем тип пол
+                String fieldType = fields[i].getType().getSimpleName(); // получаем тип пол
+                Exclude exclude = fields[i].getAnnotation(Exclude.class);// проверяем что поле имеет аннотацию
+                if (exclude != null) continue; // если аннотация есть,то в результат это поле не идет.
                 sb.append(fieldType).
                     append(" ").
                     append(fieldName);

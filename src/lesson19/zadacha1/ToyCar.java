@@ -8,6 +8,8 @@ public class ToyCar extends Toy {
     private String owner = "Tom";
     public String name = "Ferrary";
     public int price = 1000;
+    @Exclude public boolean isToy = false;
+
 
     @Override
     public String toString() {
