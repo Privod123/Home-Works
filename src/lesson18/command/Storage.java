@@ -14,6 +14,11 @@ public class Storage {
         storageMessage.add(text);
     }
 
+    public boolean remove(){
+        storageMessage.remove(storageMessage.size() - 1);
+        return true;
+    }
+
     public void printStorage(){
         System.out.println("/--------------------------/");
         System.out.println("История сообщений введеных пользователем:");

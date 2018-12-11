@@ -18,4 +18,5 @@ public class ProcessCommand extends Command {
         storage.add(sb.toString()); // запись данных в хранилище
         return true;
     }
+
 }

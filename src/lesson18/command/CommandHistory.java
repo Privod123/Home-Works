@@ -8,8 +8,14 @@ import java.util.*;
 public class CommandHistory {
     private List<Command> historyCommand = new ArrayList<>();
 
-    public void add(Command command){
+    public void addCommand(Command command){
         historyCommand.add(command);
+    }
+
+    public void removeCommand(){historyCommand.remove(historyCommand.size() - 1);}
+
+    public List<Command> getHistoryCommand() {
+        return historyCommand;
     }
 
     public void listCommandHistory(){

@@ -20,10 +20,8 @@ public class TextProcessor {
 
     public void start(){
         Scanner in;
-//        sb.append("-------------------------").append("\n");
         System.out.println("Введи текст или команду");
         label: while (true){
-//            System.out.println("Введи текст или команду");
             in = new Scanner(System.in);
             String message = in.nextLine();
             switch (message){
@@ -47,7 +45,7 @@ public class TextProcessor {
                 case "process":
                     Command process = new ProcessCommand(this);
                    if (process.execute(sb,storage)){
-                        history.add(process);
+                        history.addCommand(process);
                         sb.delete(0,sb.length()); // стираем данные что ввел пользователь,команда выполнилась
                         System.out.println("Запись в хранилище данных прошла успешно");
                    }else {
@@ -62,10 +60,41 @@ public class TextProcessor {
                         }else {
                             System.out.println("ОШИБКА записи в хранилище данных");
                         }
-                        history.add(repeat);
+                        history.addCommand(repeat);
                         sb.delete(0,sb.length()); // стираем данные что ввел пользователь,команда выполнилась
                     }else {
                         System.out.println("ОШИБКА записи в хранилище данных");
+                    }
+                    break;
+                case "cancel":
+                    CancelCommand cancel = new CancelCommand(this);
+                    if (history.isEmpety() ){
+                        System.out.println("Хранилище данных пустое");
+                        history.addCommand(cancel);
+                    } else if (!history.isEmpety() &&
+                            history.getHistoryCommand().get(history.getHistoryCommand().size() - 1).name().equals("CancelCommand")){
+                        System.out.println("Несколько раз подрят команду \"cancel\" вводить нельзя");
+                    } else if (!history.isEmpety() &&
+                            history.getHistoryCommand().get(history.getHistoryCommand().size() - 1).name().equals("RepeatCommand")){
+                        int i = 0;
+                        while (i < 2) {
+                            if (cancel.execute(sb,storage)){
+                               if (i == 1)  System.out.println("Последнее сообщение удалили");
+                            } else {
+                                System.out.println("ОШИБКА выполнения программы");
+                            }
+                            i++;
+                        }
+                        history.removeCommand(); // удаляем предыдущую команду из логов команд
+                        history.addCommand(cancel);
+                    } else {
+                        if (cancel.execute(sb,storage)){
+                            System.out.println("Последнее сообщение удалили");
+                        } else {
+                            System.out.println("ОШИБКА выполнения программы");
+                        }
+                        history.removeCommand();
+                        history.addCommand(cancel);
                     }
                     break;
                 case "exit":
@@ -92,6 +121,7 @@ public class TextProcessor {
         listCommand.put("storage","команда показвает все сообщения записанные в хранилище");
         listCommand.put("log","команда показвает историю всех команд введеных пользователем");
         listCommand.put("repeat","команда добавляет записанный текст в хранилище 2 раза");
+        listCommand.put("cancel","команда удаляет записанный ранее текст из хранилища и последнюю команду из логов команд");
         int i = 1;
         for (Map.Entry map : listCommand.entrySet()){
             System.out.println( i++ + " : " + map.getKey() + " - " + map.getValue());

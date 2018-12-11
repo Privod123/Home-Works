@@ -13,4 +13,6 @@ abstract public class Command {
     public Command(TextProcessor processor){
         this.processor = processor;
     }
+
+
 }
