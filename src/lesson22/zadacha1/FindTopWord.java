@@ -13,7 +13,6 @@ import java.util.concurrent.BlockingQueue;
 public class FindTopWord {
 
     private BlockingQueue<String> word;
-    private BlockingQueue<Map<String,Integer>> commonWord;
     private  List<Thread> listTread = new ArrayList<>();
 
 
@@ -23,7 +22,6 @@ public class FindTopWord {
         ReadFile read = new ReadFile(inputFile,countWorker);
         List<String> stringList = read.readFile();
         word = new ArrayBlockingQueue<>(stringList.size(),true,stringList);
-//            commonWord = new ArrayBlockingQueue<>(stringList.size());
         Storage storage = new Storage(word, stringList);
 
         for (int i = 0; i < countWorker; i++) {
